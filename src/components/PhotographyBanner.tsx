@@ -6,7 +6,7 @@ const PhotographyBanner: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
 
-  const texts = ["БИЗНЕС.", "БРЕНДЫ."]
+  const texts = ["НЕЙРОН.", "МОЗГ.", "НЕРВЫ."]
 
   useEffect(() => {
     const typeSpeed = isDeleting ? 40 : 100
@@ -309,7 +309,7 @@ const PhotographyBanner: React.FC = () => {
 
         @keyframes float {
           0% {
-            transform: translateX(-100px) translateY(0px) rotate(0deg);
+            transform: translateY(100vh) scale(0);
             opacity: 0;
           }
           10% {
@@ -319,22 +319,18 @@ const PhotographyBanner: React.FC = () => {
             opacity: 1;
           }
           100% {
-            transform: translateX(calc(100vw + 100px)) translateY(-100px) rotate(360deg);
+            transform: translateY(-100px) scale(1);
             opacity: 0;
           }
         }
 
         .bg-line {
-          position: absolute;
-          top: 0;
-          right: 0;
-          width: 50%;
-          height: 85px;
-          z-index: -1;
-          overflow: hidden;
           display: flex;
-          display: -webkit-flex;
-          white-space: nowrap;
+          height: 88px;
+          position: relative;
+          overflow: hidden;
+          z-index: 1;
+          margin-bottom: 20px;
         }
 
         .bg-line img {
@@ -578,9 +574,249 @@ const PhotographyBanner: React.FC = () => {
           line-height: 1.6;
         }
 
-        .testimonials-section {
+        /* Slides section */
+        .slides-section {
           padding: 100px 30px;
           background-color: #002b36;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .slides-section::before {
+          content: "";
+          border-radius: 197.5px 0px;
+          opacity: 0.3;
+          background: #d33682;
+          filter: blur(160px);
+          height: 50%;
+          width: 40%;
+          position: absolute;
+          top: 10%;
+          left: -20%;
+          z-index: 0;
+        }
+
+        .slides-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 1;
+        }
+
+        .slides-header {
+          text-align: center;
+          margin-bottom: 60px;
+        }
+
+        .slides-header h2 {
+          color: #fff;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: clamp(40px, 6vw, 80px);
+          line-height: 0.9;
+          margin: 0 0 20px;
+          text-transform: uppercase;
+        }
+
+        .slides-header h2 .highlight {
+          color: #d33682;
+        }
+
+        .slides-header p {
+          color: #aaa;
+          font-family: "Inter", sans-serif;
+          font-size: 16px;
+          max-width: 600px;
+          margin: 0 auto;
+          line-height: 1.8;
+        }
+
+        .slides-nav {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          margin-bottom: 50px;
+          flex-wrap: wrap;
+        }
+
+        .slide-nav-btn {
+          padding: 10px 20px;
+          background: rgba(255,255,255,0.05);
+          border: 1px solid #333;
+          border-radius: 30px;
+          color: #aaa;
+          font-family: "Montserrat";
+          font-size: 13px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .slide-nav-btn:hover,
+        .slide-nav-btn.active {
+          background: #d33682;
+          border-color: #d33682;
+          color: #002b36;
+          font-weight: bold;
+        }
+
+        .slide-content {
+          display: none;
+          animation: fadeIn 0.4s ease;
+        }
+
+        .slide-content.active {
+          display: block;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-card {
+          background: rgba(255,255,255,0.04);
+          border: 1px solid #1e3a42;
+          border-radius: 24px;
+          padding: 50px;
+          backdrop-filter: blur(10px);
+        }
+
+        .slide-card h3 {
+          color: #d33682;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: clamp(22px, 3vw, 32px);
+          text-transform: uppercase;
+          margin: 0 0 40px;
+          padding-bottom: 20px;
+          border-bottom: 1px solid #1e3a42;
+        }
+
+        .slide-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 30px;
+        }
+
+        .slide-item {
+          background: rgba(255,255,255,0.03);
+          border: 1px solid #1e3a42;
+          border-radius: 16px;
+          padding: 30px;
+          transition: border-color 0.3s ease;
+        }
+
+        .slide-item:hover {
+          border-color: #d33682;
+        }
+
+        .slide-item-label {
+          color: #d33682;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 11px;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          margin-bottom: 10px;
+        }
+
+        .slide-item h4 {
+          color: #fff;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 16px;
+          text-transform: uppercase;
+          margin: 0 0 12px;
+        }
+
+        .slide-item p {
+          color: #aaa;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          line-height: 1.7;
+          margin: 0;
+        }
+
+        .slide-item ul {
+          color: #aaa;
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          line-height: 1.8;
+          margin: 0;
+          padding-left: 18px;
+        }
+
+        .slide-item ul li {
+          margin-bottom: 6px;
+        }
+
+        .slide-number {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          background: #d33682;
+          border-radius: 50%;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 16px;
+          color: #002b36;
+          margin-bottom: 16px;
+        }
+
+        .conclusion-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+          gap: 24px;
+        }
+
+        .conclusion-item {
+          background: rgba(255,255,255,0.03);
+          border: 1px solid #1e3a42;
+          border-radius: 16px;
+          padding: 28px;
+          transition: border-color 0.3s ease;
+        }
+
+        .conclusion-item:hover {
+          border-color: #d33682;
+        }
+
+        .conclusion-num {
+          color: #d33682;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 40px;
+          line-height: 1;
+          margin-bottom: 12px;
+        }
+
+        .conclusion-item h4 {
+          color: #fff;
+          font-family: "Montserrat", sans-serif;
+          font-size: 15px;
+          font-weight: 700;
+          text-transform: uppercase;
+          margin: 0 0 10px;
+        }
+
+        .conclusion-item p {
+          color: #aaa;
+          font-family: "Inter", sans-serif;
+          font-size: 13px;
+          line-height: 1.7;
+          margin: 0;
+        }
+
+        .testimonials-section {
+          padding: 100px 30px;
+          background-color: #073642;
           position: relative;
           overflow: hidden;
         }
@@ -610,90 +846,59 @@ const PhotographyBanner: React.FC = () => {
           color: #fff;
           font-family: "Montserrat", sans-serif;
           font-weight: 700;
-          font-size: clamp(60px, 8vw, 100px);
+          font-size: clamp(40px, 6vw, 80px);
           line-height: 0.9;
-          margin: 0 0 80px;
+          margin: 0 0 60px;
           text-transform: uppercase;
         }
 
-        .testimonials-marquee {
-          display: flex;
-          animation: scroll 30s linear infinite;
-          gap: 40px;
-          width: max-content;
+        .nerves-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 20px;
+          text-align: left;
         }
 
-        .testimonials-marquee:hover {
-          animation-play-state: paused;
+        .nerve-card {
+          background: rgba(255,255,255,0.04);
+          border: 1px solid #1e3a42;
+          border-radius: 16px;
+          padding: 24px;
+          transition: all 0.3s ease;
         }
 
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
+        .nerve-card:hover {
+          border-color: #d33682;
+          transform: translateY(-4px);
         }
 
-        .testimonial-card {
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid #333;
-          border-radius: 20px;
-          padding: 40px 30px;
-          position: relative;
-          backdrop-filter: blur(10px);
-          width: 400px;
-          flex-shrink: 0;
+        .nerve-number {
+          color: #d33682;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 28px;
+          margin-bottom: 8px;
         }
 
-        .testimonial-quote {
+        .nerve-name {
           color: #fff;
-          font-family: "Inter", sans-serif;
-          font-weight: 400;
-          font-size: 16px;
-          line-height: 1.8;
-          margin: 0 0 30px;
-          font-style: italic;
-        }
-
-        .testimonial-author {
-          display: flex;
-          font-family: "Inter", sans-serif;
-          align-items: center;
-          gap: 15px;
-        }
-
-        .author-avatar {
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          background: #d33682;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: bold;
-          color: #002b36;
-        }
-
-        .author-info h4 {
-          color: #cb4b16;
-          font-family: "Inter", sans-serif;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
           font-size: 14px;
-          margin: 0;
           text-transform: uppercase;
+          margin-bottom: 6px;
         }
 
-        .author-info p {
+        .nerve-desc {
           color: #aaa;
           font-family: "Inter", sans-serif;
-          font-size: 12px;
-          margin: 5px 0 0;
+          font-size: 13px;
+          line-height: 1.6;
         }
 
         .cta-section {
           padding: 120px 30px;
-          background-color: #073642;
+          background-color: #002b36;
           position: relative;
           overflow: hidden;
         }
@@ -722,7 +927,7 @@ const PhotographyBanner: React.FC = () => {
           color: #fff;
           font-family: "Montserrat", sans-serif;
           font-weight: 700;
-          font-size: clamp(80px, 12vw, 160px);
+          font-size: clamp(60px, 10vw, 140px);
           line-height: 0.8;
           margin: 0 0 30px;
           text-transform: uppercase;
@@ -731,7 +936,7 @@ const PhotographyBanner: React.FC = () => {
         .cta-subtitle {
           color: #d33682;
           font-family: "Montserrat";
-          font-size: 26px;
+          font-size: 22px;
           line-height: 1.6;
           margin: 0 0 50px;
           max-width: 600px;
@@ -779,15 +984,13 @@ const PhotographyBanner: React.FC = () => {
 
         @media screen and (max-width: 1199px) {
           .features-section,
+          .slides-section,
           .testimonials-section,
           .cta-section {
             padding: 80px 20px;
           }
           .features-container {
             gap: 40px;
-          }
-          .testimonials-marquee {
-            gap: 30px;
           }
           .cta-buttons {
             gap: 20px;
@@ -796,6 +999,7 @@ const PhotographyBanner: React.FC = () => {
 
         @media screen and (max-width: 767px) {
           .features-section,
+          .slides-section,
           .testimonials-section,
           .cta-section {
             padding: 60px 16px;
@@ -804,10 +1008,7 @@ const PhotographyBanner: React.FC = () => {
             grid-template-columns: 1fr;
             gap: 30px;
           }
-          .testimonials-marquee {
-            gap: 25px;
-          }
-          .testimonial-card {
+          .slide-card {
             padding: 30px 20px;
           }
           .cta-buttons {
@@ -824,11 +1025,12 @@ const PhotographyBanner: React.FC = () => {
 
       <div className="photography-banner">
         <main>
+          {/* HERO */}
           <section className="info-section">
             <div className="left-part">
               <h1>
                 <span className="d-flex">
-                  {["С", "О", "З", "Д", "А", "Ё", "М"].map((char, index) => (
+                  {["Н", "Е", "Р", "В", "Н", "А", "Я"].map((char, index) => (
                     <span key={index} className="char tracking-tighter" style={{ animationDelay: `${index * 0.08}s` }}>
                       {char === " " ? "\u00A0" : char}
                     </span>
@@ -837,10 +1039,10 @@ const PhotographyBanner: React.FC = () => {
                 <span className="text tracking-tighter">{currentText}</span>
               </h1>
               <p className="tracking-widest">
-                Помогаем предпринимателям запускать цифровые продукты быстрее с помощью современных технологий
+                Строение, функции и отделы нервной системы человека — от нейрона до коры полушарий
               </p>
-              <a href="#cta" className="book-link">
-                <span className="linktext tracking-tighter text-3xl">Начать проект</span>
+              <a href="#slides" className="book-link">
+                <span className="linktext tracking-tighter text-3xl">Смотреть</span>
                 <span className="arrow">
                   <span></span>
                 </span>
@@ -885,45 +1087,37 @@ const PhotographyBanner: React.FC = () => {
             </div>
           </section>
 
+          {/* СТРУКТУРА */}
           <section className="features-section">
             <div className="features-container">
               <div className="features-content">
-                <h2>Почему выбирают нас?</h2>
+                <h2>Общая <span className="highlight">структура</span></h2>
               </div>
               <ul className="features-list">
                 <li className="feature-item">
                   <div className="feature-icon">01</div>
                   <div className="feature-text">
-                    <h3>Опытная команда</h3>
+                    <h3>Нейрон — основа</h3>
                     <p className="font-light tracking-wider">
-                      Более 10 лет опыта в разработке цифровых продуктов для бизнеса любого масштаба
+                      Тело нейрона → серое вещество. Отростки → белое вещество. Нейроны связаны между собой, образуя единую сеть.
                     </p>
                   </div>
                 </li>
                 <li className="feature-item">
                   <div className="feature-icon">02</div>
                   <div className="feature-text">
-                    <h3>Современные технологии</h3>
+                    <h3>ЦНС и периферия</h3>
                     <p className="tracking-wider">
-                      Используем передовые инструменты и фреймворки для создания быстрых и надёжных решений
+                      Центральная: головной и спинной мозг. Периферическая: нервы — отростки нейронов, выходящие за пределы ЦНС.
                     </p>
                   </div>
                 </li>
                 <li className="feature-item">
                   <div className="feature-icon">03</div>
                   <div className="feature-text">
-                    <h3>Индивидуальный подход</h3>
+                    <h3>Спинной мозг</h3>
                     <p className="tracking-wider">
-                      Каждый проект уникален — мы адаптируем решения под ваши конкретные задачи и цели
-                    </p>
-                  </div>
-                </li>
-                <li className="feature-item">
-                  <div className="feature-icon">04</div>
-                  <div className="feature-text">
-                    <h3>Поддержка 24/7</h3>
-                    <p className="tracking-wider">
-                      Обеспечиваем техническую поддержку и сопровождение на всех этапах работы
+                      Расположен в позвоночном канале. В центре — «бабочка» из серого вещества (рога), по краям — белое. Три оболочки: твёрдая → паутинная → мягкая (между ними ликвор).
                     </p>
                   </div>
                 </li>
@@ -931,105 +1125,168 @@ const PhotographyBanner: React.FC = () => {
             </div>
           </section>
 
+          {/* СЛАЙДЫ */}
+          <SlidesSection />
+
+          {/* ЧЕРЕПНЫЕ НЕРВЫ */}
           <section className="testimonials-section">
             <div className="testimonials-container">
-              <h2 className="testimonials-title">Отзывы клиентов</h2>
-              <div className="testimonials-marquee">
-                <div className="testimonial-card">
-                  <p className="testimonial-quote">
-                    "Команда полностью изменила наш подход к цифровому присутствию. Результаты превзошли все ожидания."
-                  </p>
-                  <div className="testimonial-author">
-                    <div className="author-avatar">АС</div>
-                    <div className="author-info">
-                      <h4>Алексей Смирнов</h4>
-                      <p>Директор по развитию</p>
-                    </div>
+              <h2 className="testimonials-title">12 пар черепных <span style={{color:'#d33682'}}>нервов</span></h2>
+              <div className="nerves-grid">
+                {[
+                  { num: "I", name: "Обонятельный", desc: "Восприятие запахов. Идёт от носовой полости." },
+                  { num: "II", name: "Зрительный", desc: "Передаёт зрительные сигналы от сетчатки глаза." },
+                  { num: "V", name: "Тройничный", desc: "Смешанный нерв. Чувствительность лица, движение челюсти." },
+                  { num: "VII", name: "Лицевой", desc: "Мимическая мускулатура, слюнные железы." },
+                  { num: "VIII", name: "Слуховой", desc: "Слух и равновесие (вестибулярная функция)." },
+                  { num: "X", name: "Блуждающий", desc: "Главный парасимпатический нерв. Сердце, лёгкие, кишечник." },
+                ].map((nerve) => (
+                  <div key={nerve.num} className="nerve-card">
+                    <div className="nerve-number">{nerve.num}</div>
+                    <div className="nerve-name">{nerve.name}</div>
+                    <div className="nerve-desc">{nerve.desc}</div>
                   </div>
-                </div>
-                <div className="testimonial-card">
-                  <p className="testimonial-quote">
-                    "Профессиональный подход и внимание к деталям. Запустили проект в рекордные сроки без потери качества."
-                  </p>
-                  <div className="testimonial-author">
-                    <div className="author-avatar">МК</div>
-                    <div className="author-info">
-                      <h4>Мария Козлова</h4>
-                      <p>Основатель стартапа</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="testimonial-card">
-                  <p className="testimonial-quote">
-                    "От идеи до запуска — всё прошло гладко. Рекомендую всем, кто ценит качество и скорость."
-                  </p>
-                  <div className="testimonial-author">
-                    <div className="author-avatar">ДВ</div>
-                    <div className="author-info">
-                      <h4>Дмитрий Волков</h4>
-                      <p>Предприниматель</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="testimonial-card">
-                  <p className="testimonial-quote">
-                    "Команда полностью изменила наш подход к цифровому присутствию. Результаты превзошли все ожидания."
-                  </p>
-                  <div className="testimonial-author">
-                    <div className="author-avatar">АС</div>
-                    <div className="author-info">
-                      <h4>Алексей Смирнов</h4>
-                      <p>Директор по развитию</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="testimonial-card">
-                  <p className="testimonial-quote">
-                    "Профессиональный подход и внимание к деталям. Запустили проект в рекордные сроки без потери качества."
-                  </p>
-                  <div className="testimonial-author">
-                    <div className="author-avatar">МК</div>
-                    <div className="author-info">
-                      <h4>Мария Козлова</h4>
-                      <p>Основатель стартапа</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="testimonial-card">
-                  <p className="testimonial-quote">
-                    "От идеи до запуска — всё прошло гладко. Рекомендую всем, кто ценит качество и скорость."
-                  </p>
-                  <div className="testimonial-author">
-                    <div className="author-avatar">ДВ</div>
-                    <div className="author-info">
-                      <h4>Дмитрий Волков</h4>
-                      <p>Предприниматель</p>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </section>
 
+          {/* ИТОГ */}
           <section className="cta-section" id="cta">
             <div className="cta-container">
-              <h2 className="cta-title text-center">Готовы начать?</h2>
-              <p className="cta-subtitle">
-                Присоединяйтесь к сотням компаний, которые уже трансформировали свой бизнес. Ваш путь к успеху начинается здесь.
+              <h2 className="cta-title text-center">Итог</h2>
+              <p className="cta-subtitle" style={{textAlign:'center'}}>
+                Нервная система — единое целое, управляющее всем организмом
               </p>
-              <div className="cta-buttons">
-                <a href="#" className="cta-button">
-                  Обсудить проект
-                </a>
-                <a href="#" className="cta-button secondary">
-                  Посмотреть кейсы
-                </a>
+              <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:'20px', textAlign:'left'}}>
+                {[
+                  { n: "1", title: "Связь со средой", text: "Чувствительные нервы принимают сигналы, двигательные — отдают команды мышцам." },
+                  { n: "2", title: "Регуляция организма", text: "Управляет мышцами сознательно и внутренними органами вегетативно." },
+                  { n: "3", title: "Высший центр — кора", text: "Анализ информации и формирование поведения происходит в коре полушарий." },
+                  { n: "4", title: "Целостность", text: "Деление на центральную и периферическую нервную систему условно — это единое целое." },
+                ].map((item) => (
+                  <div key={item.n} className="conclusion-item">
+                    <div className="conclusion-num">{item.n}</div>
+                    <h4>{item.title}</h4>
+                    <p>{item.text}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
         </main>
       </div>
     </>
+  )
+}
+
+const SlidesSection: React.FC = () => {
+  const [activeSlide, setActiveSlide] = useState(0)
+
+  const slides = [
+    {
+      title: "Головной мозг: отделы",
+      items: [
+        {
+          label: "Ромбовидный мозг",
+          title: "Продолговатый + Мозжечок",
+          content: "Продолговатый мозг — жизненно важные рефлексы. Мозжечок — координация движений и равновесие.",
+        },
+        {
+          label: "Средний мозг",
+          title: "Четверохолмие",
+          content: "Содержит центры зрения и слуха. Проходит мозговой водопровод — канал спинномозговой жидкости.",
+        },
+        {
+          label: "Промежуточный мозг",
+          title: "Таламус + Гипоталамус + Гипофиз",
+          content: "Таламус — центр чувствительности. Гипоталамус — вегетатика и гормоны. Гипофиз — главная эндокринная железа.",
+        },
+        {
+          label: "Конечный мозг",
+          title: "Два полушария",
+          content: "Покрыты корой из серого вещества снаружи. Внутри — белое вещество и подкорковые ядра. Здесь — мышление и поведение.",
+        },
+      ],
+    },
+    {
+      title: "Нервы и вегетативная система",
+      items: [
+        {
+          label: "Типы нервов",
+          title: "Чувствительные, двигательные, смешанные",
+          content: "Чувствительные несут сигналы к мозгу. Двигательные — команды к мышцам. Смешанные выполняют оба действия.",
+        },
+        {
+          label: "Симпатическая часть",
+          title: "«Бей или беги»",
+          content: "Центры в груди и пояснице. Учащает сердечный ритм, суживает сосуды, активирует реакцию на стресс.",
+        },
+        {
+          label: "Парасимпатическая часть",
+          title: "«Отдых и переваривание»",
+          content: "Центры в мозге и крестце. Главный нерв — Блуждающий (X пара). Регулирует пищеварение и состояние покоя.",
+        },
+      ],
+    },
+    {
+      title: "Спинномозговые нервы",
+      items: [
+        {
+          label: "Плечевое сплетение",
+          title: "Рука",
+          content: "Лучевой, локтевой, срединный нервы — обеспечивают движение и чувствительность всей руки.",
+        },
+        {
+          label: "Пояснично-крестцовое сплетение",
+          title: "Нога",
+          content: "Седалищный нерв — самый крупный в теле. Делится на большеберцовый и малоберцовый.",
+        },
+        {
+          label: "Другие важные нервы",
+          title: "Бедренный и срамной",
+          content: "Бедренный нерв — передняя поверхность бедра. Срамной нерв — иннервация половых органов и промежности.",
+        },
+      ],
+    },
+  ]
+
+  return (
+    <section className="slides-section" id="slides">
+      <div className="slides-container">
+        <div className="slides-header">
+          <h2>Детальный <span className="highlight">разбор</span></h2>
+          <p>Выберите раздел, чтобы изучить подробнее</p>
+        </div>
+        <div className="slides-nav">
+          {slides.map((slide, i) => (
+            <button
+              key={i}
+              className={`slide-nav-btn${activeSlide === i ? " active" : ""}`}
+              onClick={() => setActiveSlide(i)}
+            >
+              {slide.title}
+            </button>
+          ))}
+        </div>
+        {slides.map((slide, i) => (
+          <div key={i} className={`slide-content${activeSlide === i ? " active" : ""}`}>
+            <div className="slide-card">
+              <h3>{slide.title}</h3>
+              <div className="slide-grid">
+                {slide.items.map((item, j) => (
+                  <div key={j} className="slide-item">
+                    <div className="slide-item-label">{item.label}</div>
+                    <h4>{item.title}</h4>
+                    <p>{item.content}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   )
 }
 
